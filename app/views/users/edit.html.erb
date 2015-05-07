@@ -1,0 +1,8 @@
+<% provide(:title, "Update Profile") %>
+
+<h1>Update Profile</h1>
+
+<%= form_for(@user) do |f| %>
+  <%= render 'fields', f: f %>
+  <%= f.submit "Save changes" %>
+<% end %>

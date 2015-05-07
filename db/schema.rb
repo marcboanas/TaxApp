@@ -11,9 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150507111022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "access_token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.boolean  "email_verification"
+    t.string   "verification_code"
+    t.string   "api_authtoken"
+    t.datetime "authtoken_expiry"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.datetime "reset_sent_at"
+    t.string   "reset_digest"
+    t.datetime "activated_at"
+    t.boolean  "activated"
+    t.boolean  "admin"
+    t.string   "activation_digest"
+    t.string   "remember_digest"
+  end
 
 end

@@ -11,6 +11,11 @@ gem 'foreman'
 gem 'omniauth-google-oauth2'
 gem 'angular-rails-templates'
 gem 'responders'
+gem 'bcrypt'
+gem 'aws-sdk'
+gem 'aescrypt'
+gem 'annotate'
+gem 'will_paginate'
 
 group :production, :staging do
   gem 'rails_12factor'

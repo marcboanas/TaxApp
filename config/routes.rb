@@ -1,6 +1,32 @@
 Rails.application.routes.draw do
 
+  #Root Path
   root "home#index"
+
+
+  #API Routes
+  require 'api_constraints'
+  namespace :api, defaults: { format: 'json' } do
+    scope module: :v1, constraints:ApiConstraints.new(version: 1, default: true) do
+      resources :api
+      resources :users
+    end
+  end
+
+  #Users Routes
+  get 'signup' => 'users#new'
+  resources :users
+
+  #Sessions Routes
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+  #Account Activation
+  resources :account_activation, only: [:edit]
+
+  #Password Resets
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
